@@ -11,9 +11,9 @@ import java.util.List;
 @Service
 public class postServiceImpl implements PostService {
 
-    private final
-    PostRepo postRepo;
-
+    private final PostRepo postRepo;
+    
+    @Autowired
     public postServiceImpl(PostRepo postRepo) {
         this.postRepo = postRepo;
     }
@@ -36,5 +36,10 @@ public class postServiceImpl implements PostService {
     @Override
     public void updateById(int id, Post post) {
         postRepo.save(post);
+    }
+
+    @Override
+    public List<Post> findAllByTitleEquals(String title) {
+        return postRepo.findAllByTitleEquals(title);
     }
 }

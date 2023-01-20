@@ -1,6 +1,9 @@
 package edu.miu.LabHW.entity;
-import jakarta.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -10,5 +13,8 @@ public class Post {
     String title;
     String content;
     String author;
+
+    @OneToMany(mappedBy = "post",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    List<Comment> comments;
 
 }

@@ -2,6 +2,7 @@ package edu.miu.LabHW.controller;
 
 import edu.miu.LabHW.entity.Post;
 import edu.miu.LabHW.entity.Users;
+import edu.miu.LabHW.service.Impl.userServiceImpl;
 import edu.miu.LabHW.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
-    private final UserService userService;
+    private final userServiceImpl userService;
 
-    UserController(UserService userService) {
+    UserController(userServiceImpl userService) {
         this.userService = userService;
     }
 
@@ -34,6 +35,11 @@ public class UserController {
     @GetMapping("/{id}/posts")
     public List<Post> findAllPostsByUserId(@PathVariable long id) {
         return userService.findAllPostsByUserId(id);
+    }
+
+    @GetMapping("filter/posts/{num}")
+    public List<Users> findUsersWithPosts(@PathVariable(name = "num") int num) {
+        return userService.findUsersWithPosts(num);
     }
 
 }

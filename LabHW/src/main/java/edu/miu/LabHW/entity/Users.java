@@ -1,24 +1,21 @@
 package edu.miu.LabHW.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Data
-@Entity(name = "users")
-@AllArgsConstructor
-@NoArgsConstructor
 public class Users {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     String name;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    List<Post> posts;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "users_id")
+    private List<Post> posts;
 
 }

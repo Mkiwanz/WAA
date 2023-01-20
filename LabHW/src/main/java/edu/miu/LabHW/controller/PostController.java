@@ -36,4 +36,9 @@ public class PostController {
     public void updateById(@PathVariable int id, @RequestBody Post p) {
         postService.updateById(id, p);
     }
+
+    @GetMapping("/filter/title/{title}")
+    List<Post> findAllByTitleEquals(@PathVariable(name = "title") String title) {
+        return postService.findAllByTitleEquals(title);
+    }
 }

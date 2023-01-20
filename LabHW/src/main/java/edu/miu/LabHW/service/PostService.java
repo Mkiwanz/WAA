@@ -13,4 +13,7 @@ public interface PostService {
     void deleteById(long id);
 
     void updateById(int id,Post post);
+
+    List<Post> findAllByTitleEquals(String title);
+
 }

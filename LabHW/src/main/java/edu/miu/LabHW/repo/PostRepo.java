@@ -13,4 +13,6 @@ public interface PostRepo extends CrudRepository<Post, Long> {
 
     Post findAllById(long id);
 
+    List<Post> findAllByTitleEquals(String title);
+
 }

@@ -11,9 +11,11 @@ public interface UserService {
 
     List<Post> findAllPostsByUserId(long id);
 
-
     Users findAllById(long id);
 
     Users addUser(Users users);
+
+    List<Users> findUsersWithPosts(int num);
+
 
 }
