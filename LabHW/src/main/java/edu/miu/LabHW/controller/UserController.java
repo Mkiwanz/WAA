@@ -1,5 +1,6 @@
 package edu.miu.LabHW.controller;
 
+import edu.miu.LabHW.entity.Annotaions.ExecutionTime;
 import edu.miu.LabHW.entity.Comment;
 import edu.miu.LabHW.entity.Post;
 import edu.miu.LabHW.entity.Users;
@@ -27,8 +28,8 @@ public class UserController {
     public List<Users> findAll() {
         return userService.findAll();
     }
-
     @GetMapping("/{id}")
+    @ExecutionTime
     public Users findAllById(@PathVariable long id) {
         return userService.findAllById(id);
     }
