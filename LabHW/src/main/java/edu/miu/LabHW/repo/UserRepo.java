@@ -1,5 +1,6 @@
 package edu.miu.LabHW.repo;
 
+import edu.miu.LabHW.entity.Post;
 import edu.miu.LabHW.entity.Users;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,7 @@ public interface UserRepo extends CrudRepository<Users, Long> {
     Users findAllById(long id);
 
 
-    @Query(value ="select u from Users u where u.posts.size >= :num")
+    @Query(value = "select u from users u where size(u.posts) >= :num")
     List<Users> findUsersWithPosts(int num);
+
 }

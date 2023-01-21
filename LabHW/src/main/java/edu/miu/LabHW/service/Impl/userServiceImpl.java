@@ -34,10 +34,6 @@ public class userServiceImpl implements UserService {
         return userRepo.findAll();
     }
 
-    @Override
-    public List<Post> findAllPostsByUserId(long id) {
-        return findAll().stream().filter(x -> x.getId() == id).flatMap(e -> e.getPosts().stream()).toList();
-    }
 
     @Override
     public Users findAllById(long id) {

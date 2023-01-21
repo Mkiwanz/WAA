@@ -16,4 +16,11 @@ public interface PostService {
 
     List<Post> findAllByTitleEquals(String title);
 
+    List<Post> findPostByUser_Id(long id);
+
+
+    Post findPostByUsers_IdAndId(long id, long post_id);
+
+    void addUserPost(long user_id,Post post);
+
 }

@@ -1,11 +1,14 @@
 package edu.miu.LabHW.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+import jakarta.persistence.Id;
 import lombok.Data;
-import javax.persistence.*;
+
 import java.util.List;
 
-@Entity
+@Table(name = "users")
+@Entity(name = "users")
 @Data
 public class Users {
 
@@ -14,7 +17,7 @@ public class Users {
     long id;
     String name;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "users_id")
     private List<Post> posts;
 

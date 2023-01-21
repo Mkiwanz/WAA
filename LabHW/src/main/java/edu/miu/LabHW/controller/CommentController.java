@@ -1,13 +1,11 @@
 package edu.miu.LabHW.controller;
 
 import edu.miu.LabHW.entity.Comment;
+import edu.miu.LabHW.repo.CommentRepo;
 import edu.miu.LabHW.service.CommentService;
 import edu.miu.LabHW.service.Impl.commentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +29,6 @@ public class CommentController {
     public Comment findAllCommentsById(@PathVariable long id) {
         return commentService.findAllById(id);
     }
+
+
 }
