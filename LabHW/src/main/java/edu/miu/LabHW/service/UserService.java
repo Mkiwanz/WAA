@@ -2,19 +2,20 @@ package edu.miu.LabHW.service;
 
 import edu.miu.LabHW.entity.Post;
 import edu.miu.LabHW.entity.Users;
+import edu.miu.LabHW.entity.dto.UsersDTO;
 
 import java.util.List;
 
 public interface UserService {
 
-    List<Users> findAll();
+    List<UsersDTO> findAll();
 
 
-    Users findAllById(long id);
+    UsersDTO findAllById(long id);
 
-    Users addUser(Users users);
+    UsersDTO addUser(Users users);
 
-    List<Users> findUsersWithPosts(int num);
+    List<UsersDTO> findUsersWithPosts(int num);
 
 
 

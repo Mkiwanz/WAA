@@ -1,6 +1,7 @@
 package edu.miu.LabHW.controller;
 
 import edu.miu.LabHW.entity.Post;
+import edu.miu.LabHW.entity.dto.PostDTO;
 import edu.miu.LabHW.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +19,12 @@ public class PostController {
     }
 
     @GetMapping
-    List<Post> findAllPosts() {
+    List<PostDTO> findAllPosts() {
         return postService.findAll();
     }
 
     @GetMapping("/{id}")
-    Post findAllPostsById(@PathVariable int id) {
+    PostDTO findAllPostsById(@PathVariable int id) {
         return postService.findAllById(id);
     }
 
@@ -38,7 +39,7 @@ public class PostController {
     }
 
     @GetMapping("/filter/title/{title}")
-    List<Post> findAllByTitleEquals(@PathVariable(name = "title") String title) {
+    List<PostDTO> findAllByTitleEquals(@PathVariable(name = "title") String title) {
         return postService.findAllByTitleEquals(title);
     }
 }

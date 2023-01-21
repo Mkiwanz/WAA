@@ -1,6 +1,7 @@
 package edu.miu.LabHW.controller;
 
 import edu.miu.LabHW.entity.Comment;
+import edu.miu.LabHW.entity.dto.CommentDTO;
 import edu.miu.LabHW.repo.CommentRepo;
 import edu.miu.LabHW.service.CommentService;
 import edu.miu.LabHW.service.Impl.commentServiceImpl;
@@ -21,12 +22,12 @@ public class CommentController {
     }
 
     @GetMapping
-    public List<Comment> findAllComments() {
+    public List<CommentDTO> findAllComments() {
         return commentService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Comment findAllCommentsById(@PathVariable long id) {
+    public CommentDTO findAllCommentsById(@PathVariable long id) {
         return commentService.findAllById(id);
     }
 

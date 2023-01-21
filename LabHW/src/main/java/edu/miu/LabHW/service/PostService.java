@@ -1,25 +1,26 @@
 package edu.miu.LabHW.service;
 
 import edu.miu.LabHW.entity.Post;
+import edu.miu.LabHW.entity.dto.PostDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 public interface PostService {
-    List<Post> findAll();
+    List<PostDTO> findAll();
 
-    Post findAllById(long id);
+    PostDTO findAllById(long id);
 
     void deleteById(long id);
 
     void updateById(int id,Post post);
 
-    List<Post> findAllByTitleEquals(String title);
+    List<PostDTO> findAllByTitleEquals(String title);
 
-    List<Post> findPostByUser_Id(long id);
+    List<PostDTO> findPostByUser_Id(long id);
 
 
-    Post findPostByUsers_IdAndId(long id, long post_id);
+    PostDTO findPostByUsers_IdAndId(long id, long post_id);
 
     void addUserPost(long user_id,Post post);
 

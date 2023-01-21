@@ -1,8 +1,6 @@
 package edu.miu.LabHW.repo;
 
-import edu.miu.LabHW.entity.Post;
 import edu.miu.LabHW.entity.Users;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

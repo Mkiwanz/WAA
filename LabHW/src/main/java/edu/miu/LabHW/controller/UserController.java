@@ -4,6 +4,9 @@ import edu.miu.LabHW.entity.Annotaions.ExecutionTime;
 import edu.miu.LabHW.entity.Comment;
 import edu.miu.LabHW.entity.Post;
 import edu.miu.LabHW.entity.Users;
+import edu.miu.LabHW.entity.dto.CommentDTO;
+import edu.miu.LabHW.entity.dto.PostDTO;
+import edu.miu.LabHW.entity.dto.UsersDTO;
 import edu.miu.LabHW.service.Impl.commentServiceImpl;
 import edu.miu.LabHW.service.Impl.postServiceImpl;
 import edu.miu.LabHW.service.Impl.userServiceImpl;
@@ -25,22 +28,23 @@ public class UserController {
     }
 
     @GetMapping
-    public List<Users> findAll() {
+    public List<UsersDTO> findAll() {
         return userService.findAll();
     }
+
     @GetMapping("/{id}")
     @ExecutionTime
-    public Users findAllById(@PathVariable long id) {
+    public UsersDTO findAllById(@PathVariable long id) {
         return userService.findAllById(id);
     }
 
     @PostMapping
-    public Users AddUser(@RequestBody Users user) {
+    public UsersDTO AddUser(@RequestBody Users user) {
         return userService.addUser(user);
     }
 
     @GetMapping("/{id}/posts")
-    public List<Post> findAllPostsByUserId(@PathVariable long id) {
+    public List<PostDTO> findAllPostsByUserId(@PathVariable long id) {
         return postService.findPostByUser_Id(id);
     }
 
@@ -50,22 +54,22 @@ public class UserController {
     }
 
     @PostMapping("/{user_id}/posts/{post_id}/comments")
-    public void addComment(@PathVariable(name = "user_id") long user_id, @PathVariable(name = "post_id") long post_id, @RequestBody Comment comment) {
+    public void saveComment(@PathVariable(name = "user_id") long user_id, @PathVariable(name = "post_id") long post_id, @RequestBody Comment comment) {
         commentService.saveComment(user_id, post_id, comment);
     }
 
     @GetMapping("/{id}/posts/{post_id}")
-    public Post findAllPostsByUserAndPost(@PathVariable(name = "id") long id, @PathVariable(name = "post_id") long post_id) {
+    public PostDTO findAllPostsByUserAndPost(@PathVariable(name = "id") long id, @PathVariable(name = "post_id") long post_id) {
         return postService.findPostByUsers_IdAndId(id, post_id);
     }
 
     @GetMapping("/{user_id}/posts/{post_id}/comments")
-    public List<Comment> findAllPostsComments(@PathVariable(name = "user_id") long user_id, @PathVariable(name = "post_id") long post_id) {
+    public List<CommentDTO> findAllPostsComments(@PathVariable(name = "user_id") long user_id, @PathVariable(name = "post_id") long post_id) {
         return commentService.findAllByPost_Users_IdAndPost_Id(user_id, post_id);
     }
 
     @GetMapping("filter/posts/{num}")
-    public List<Users> findUsersWithPosts(@PathVariable(name = "num") int num) {
+    public List<UsersDTO> findUsersWithPosts(@PathVariable(name = "num") int num) {
         return userService.findUsersWithPosts(num);
     }
 
