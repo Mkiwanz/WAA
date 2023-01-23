@@ -76,4 +76,12 @@ public class postServiceImpl implements PostService {
         } else
             System.out.println("There is no user");
     }
+
+    @Override
+    public List<PostDTO> findPostByUsers_IdAndAuthorOrTitle(long id, String author, String title) {
+
+        List<PostDTO> postDTOS = new ArrayList<>();
+        postRepo.findPostByUsers_IdAndAuthorOrTitle(id, author, title).forEach(x -> postDTOS.add(modelMapper.map(x, PostDTO.class)));
+        return postDTOS;
+    }
 }

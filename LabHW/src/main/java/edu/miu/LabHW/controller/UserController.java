@@ -42,11 +42,11 @@ public class UserController {
     public UsersDTO AddUser(@RequestBody Users user) {
         return userService.addUser(user);
     }
-
+/*
     @GetMapping("/{id}/posts")
     public List<PostDTO> findAllPostsByUserId(@PathVariable long id) {
         return postService.findPostByUser_Id(id);
-    }
+    }*/
 
     @PostMapping("/{user_id}/posts")
     public void addUserPost(@PathVariable long user_id, @RequestBody Post post) {
@@ -71,6 +71,11 @@ public class UserController {
     @GetMapping("filter/posts/{num}")
     public List<UsersDTO> findUsersWithPosts(@PathVariable(name = "num") int num) {
         return userService.findUsersWithPosts(num);
+    }
+
+    @GetMapping("/{user_id}/posts")
+    public List<PostDTO> findPostByFilter(@PathVariable(name = "user_id") long user_id, @RequestParam(value = "author", required = false) String author, @RequestParam(value = "title", required = false) String title) {
+        return author != null || title != null ? postService.findPostByUsers_IdAndAuthorOrTitle(user_id, author, title) : postService.findPostByUser_Id(user_id);
     }
 
 

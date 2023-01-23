@@ -24,4 +24,7 @@ public interface PostService {
 
     void addUserPost(long user_id,Post post);
 
+    List<PostDTO> findPostByUsers_IdAndAuthorOrTitle(long id, String author, String title);
+
+
 }
