@@ -19,4 +19,5 @@ public interface UserRepo extends CrudRepository<Users, Long> {
     @Query(value = "select u from users u where size(u.posts) >= :num")
     List<Users> findUsersWithPosts(int num);
 
+    void deleteById(long id);
 }

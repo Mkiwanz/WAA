@@ -3,6 +3,7 @@ package edu.miu.LabHW.service.Impl;
 import edu.miu.LabHW.entity.Post;
 import edu.miu.LabHW.entity.dto.PostDTO;
 import edu.miu.LabHW.repo.PostRepo;
+import edu.miu.LabHW.repo.PostsSearchDao;
 import edu.miu.LabHW.repo.UserRepo;
 import edu.miu.LabHW.service.PostService;
 import org.modelmapper.ModelMapper;
@@ -18,12 +19,14 @@ public class postServiceImpl implements PostService {
     private final PostRepo postRepo;
     private final UserRepo userRepo;
     private final ModelMapper modelMapper;
+    private final PostsSearchDao postsSearchDao;
 
     @Autowired
-    public postServiceImpl(PostRepo postRepo, UserRepo userRepo, ModelMapper modelMapper) {
+    public postServiceImpl(PostRepo postRepo, UserRepo userRepo, ModelMapper modelMapper, PostsSearchDao postsSearchDao) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.modelMapper = modelMapper;
+        this.postsSearchDao = postsSearchDao;
     }
 
     @Override
@@ -82,6 +85,13 @@ public class postServiceImpl implements PostService {
 
         List<PostDTO> postDTOS = new ArrayList<>();
         postRepo.findPostByUsers_IdAndAuthorOrTitle(id, author, title).forEach(x -> postDTOS.add(modelMapper.map(x, PostDTO.class)));
+        return postDTOS;
+    }
+
+    @Override
+    public List<PostDTO> findPostsByCriteria(Post post) {
+        List<PostDTO> postDTOS = new ArrayList<>();
+        postsSearchDao.findPostsByCriteria(post).forEach(x -> postDTOS.add(modelMapper.map(x, PostDTO.class)));
         return postDTOS;
     }
 }

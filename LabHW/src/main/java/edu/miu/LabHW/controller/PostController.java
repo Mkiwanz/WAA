@@ -18,10 +18,10 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping
-    List<PostDTO> findAllPosts() {
-        return postService.findAll();
-    }
+//    @GetMapping
+//    List<PostDTO> findAllPosts() {
+//        return postService.findAll();
+//    }
 
     @GetMapping("/{id}")
     PostDTO findAllPostsById(@PathVariable int id) {
@@ -41,5 +41,10 @@ public class PostController {
     @GetMapping("/filter/title/{title}")
     List<PostDTO> findAllByTitleEquals(@PathVariable(name = "title") String title) {
         return postService.findAllByTitleEquals(title);
+    }
+
+    @GetMapping
+    List<PostDTO> findAllByTitleEquals(@RequestBody(required = false) Post post) {
+        return post == null ? postService.findAll() : postService.findPostsByCriteria(post);
     }
 }

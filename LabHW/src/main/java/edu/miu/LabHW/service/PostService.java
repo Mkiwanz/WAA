@@ -13,7 +13,7 @@ public interface PostService {
 
     void deleteById(long id);
 
-    void updateById(int id,Post post);
+    void updateById(int id, Post post);
 
     List<PostDTO> findAllByTitleEquals(String title);
 
@@ -22,9 +22,11 @@ public interface PostService {
 
     PostDTO findPostByUsers_IdAndId(long id, long post_id);
 
-    void addUserPost(long user_id,Post post);
+    void addUserPost(long user_id, Post post);
 
     List<PostDTO> findPostByUsers_IdAndAuthorOrTitle(long id, String author, String title);
+
+    List<PostDTO> findPostsByCriteria(Post post);
 
 
 }
