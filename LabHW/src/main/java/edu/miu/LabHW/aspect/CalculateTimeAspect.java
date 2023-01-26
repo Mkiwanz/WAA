@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class CalculateTimeAspect {
 
     // @Pointcut("execution(* edu.miu.LabHW.controller.UserController.*(..))")
-    // @Pointcut("execution(java.util.List edu.miu.LabHW.entity.dto.UsersDTO.*(..))")
+    // @Pointcut("execution(java.util.List edu.miu.LabHW.entity.dto.UserDTO.*(..))")
     @Pointcut("@annotation(edu.miu.LabHW.entity.Annotaions.ExecutionTime))")
     public void logPointcut() {
     }
@@ -37,7 +37,7 @@ public class CalculateTimeAspect {
 
 
     @AfterReturning(value = "logPointcut()",returning = "result")
-    public void logAfterReturning(JoinPoint joinPoint, UsersDTO result) throws Throwable {
+    public void logAfterReturning(JoinPoint joinPoint, UserDTO result) throws Throwable {
         long startTime = System.currentTimeMillis();
         System.out.println("TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
     }*/

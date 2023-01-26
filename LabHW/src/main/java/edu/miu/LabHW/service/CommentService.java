@@ -13,6 +13,6 @@ public interface CommentService {
 
     void saveComment(long user_id,long post_id,Comment comment);
 
-    List<CommentDTO> findAllByPost_Users_IdAndPost_Id(long user_id,long post_id);
+    List<CommentDTO> findAllByPost_User_IdAndPost_Id(long user_id,long post_id);
 
 }

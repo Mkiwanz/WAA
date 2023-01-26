@@ -1,17 +1,12 @@
 package edu.miu.LabHW.service.Impl;
 
-import edu.miu.LabHW.entity.Annotaions.ExecutionTime;
-import edu.miu.LabHW.entity.Post;
-import edu.miu.LabHW.entity.Users;
-import edu.miu.LabHW.entity.dto.UsersDTO;
+import edu.miu.LabHW.entity.User;
+import edu.miu.LabHW.entity.dto.UserDTO;
 import edu.miu.LabHW.repo.UserRepo;
 import edu.miu.LabHW.service.UserService;
-import lombok.RequiredArgsConstructor;
-import org.hibernate.Hibernate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,28 +25,28 @@ public class userServiceImpl implements UserService {
     }
 
     @Override
-    public List<UsersDTO> findAll() {
-        List<UsersDTO> usersDTOS = new ArrayList<>();
-        userRepo.findAll().forEach(x -> usersDTOS.add(modelMapper.map(x, UsersDTO.class)));
-        return usersDTOS;
+    public List<UserDTO> findAll() {
+        List<UserDTO> userDTOS = new ArrayList<>();
+        userRepo.findAll().forEach(x -> userDTOS.add(modelMapper.map(x, UserDTO.class)));
+        return userDTOS;
     }
 
 
     @Override
-    public UsersDTO findAllById(long id) {
-        return modelMapper.map(userRepo.findAllById(id), UsersDTO.class);
+    public UserDTO findAllById(long id) {
+        return modelMapper.map(userRepo.findAllById(id), UserDTO.class);
     }
 
     @Override
-    public UsersDTO addUser(Users users) {
-        return modelMapper.map(userRepo.save(users), UsersDTO.class);
+    public UserDTO addUser(User user) {
+        return modelMapper.map(userRepo.save(user), UserDTO.class);
     }
 
     @Override
-    public List<UsersDTO> findUsersWithPosts(int num) {
-        List<UsersDTO> usersDTOS = new ArrayList<>();
-        userRepo.findUsersWithPosts(num).forEach(x -> usersDTOS.add(modelMapper.map(x, UsersDTO.class)));
-        return usersDTOS;
+    public List<UserDTO> findUserWithPosts(int num) {
+        List<UserDTO> userDTOS = new ArrayList<>();
+        userRepo.findUserWithPosts(num).forEach(x -> userDTOS.add(modelMapper.map(x, UserDTO.class)));
+        return userDTOS;
     }
 
 

@@ -14,5 +14,5 @@ public interface CommentRepo extends CrudRepository<Comment, Long> {
 
     Comment findAllById(long id);
 
-    List<Comment> findAllByPost_Users_IdAndPost_Id(long user_id,long post_id);
+    List<Comment> findAllByPost_User_IdAndPost_Id(long user_id,long post_id);
 }

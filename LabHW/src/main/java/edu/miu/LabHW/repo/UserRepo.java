@@ -1,6 +1,6 @@
 package edu.miu.LabHW.repo;
 
-import edu.miu.LabHW.entity.Users;
+import edu.miu.LabHW.entity.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -9,15 +9,15 @@ import java.util.List;
 
 
 @Repository
-public interface UserRepo extends CrudRepository<Users, Long> {
+public interface UserRepo extends CrudRepository<User, Long> {
 
-    List<Users> findAll();
+    List<User> findAll();
 
-    Users findAllById(long id);
+    User findAllById(long id);
 
 
-    @Query(value = "select u from users u where size(u.posts) >= :num")
-    List<Users> findUsersWithPosts(int num);
+    @Query(value = "select u from User u where size(u.posts) >= :num")
+    List<User> findUserWithPosts(int num);
 
-    void deleteById(long id);
+    User findByEmail(String email);
 }

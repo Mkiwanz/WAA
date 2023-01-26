@@ -22,5 +22,5 @@ public class Post {
 
     @ManyToOne
     @JsonBackReference
-    Users users;
+    User user;
 }

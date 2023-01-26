@@ -61,30 +61,30 @@ public class postServiceImpl implements PostService {
     @Override
     public List<PostDTO> findPostByUser_Id(long id) {
         List<PostDTO> postDTOS = new ArrayList<>();
-        postRepo.findPostByUsers_Id(id).forEach(x -> postDTOS.add(modelMapper.map(x, PostDTO.class)));
+        postRepo.findPostByUser_Id(id).forEach(x -> postDTOS.add(modelMapper.map(x, PostDTO.class)));
         return postDTOS;
     }
 
     @Override
-    public PostDTO findPostByUsers_IdAndId(long id, long post_id) {
-        return modelMapper.map(postRepo.findPostByUsers_IdAndId(id, post_id), PostDTO.class);
+    public PostDTO findPostByUser_IdAndId(long id, long post_id) {
+        return modelMapper.map(postRepo.findPostByUser_IdAndId(id, post_id), PostDTO.class);
     }
 
     @Override
     public void addUserPost(long user_id, Post post) {
         var user = userRepo.findAllById(user_id);
         if (user != null) {
-            post.setUsers(user);
+            post.setUser(user);
             postRepo.save(post);
         } else
             System.out.println("There is no user");
     }
 
     @Override
-    public List<PostDTO> findPostByUsers_IdAndAuthorOrTitle(long id, String author, String title) {
+    public List<PostDTO> findPostByUser_IdAndAuthorOrTitle(long id, String author, String title) {
 
         List<PostDTO> postDTOS = new ArrayList<>();
-        postRepo.findPostByUsers_IdAndAuthorOrTitle(id, author, title).forEach(x -> postDTOS.add(modelMapper.map(x, PostDTO.class)));
+        postRepo.findPostByUser_IdAndAuthorOrTitle(id, author, title).forEach(x -> postDTOS.add(modelMapper.map(x, PostDTO.class)));
         return postDTOS;
     }
 

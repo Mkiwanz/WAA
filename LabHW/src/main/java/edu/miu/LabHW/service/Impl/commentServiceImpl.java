@@ -55,9 +55,9 @@ public class commentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentDTO> findAllByPost_Users_IdAndPost_Id(long user_id, long post_id) {
+    public List<CommentDTO> findAllByPost_User_IdAndPost_Id(long user_id, long post_id) {
         List<CommentDTO> commentDTOS = new ArrayList<>();
-        commentRepo.findAllByPost_Users_IdAndPost_Id(user_id, post_id).forEach(x -> commentDTOS.add(modelMapper.map(x, CommentDTO.class)));
+        commentRepo.findAllByPost_User_IdAndPost_Id(user_id, post_id).forEach(x -> commentDTOS.add(modelMapper.map(x, CommentDTO.class)));
         return commentDTOS;
     }
 }

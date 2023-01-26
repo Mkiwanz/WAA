@@ -20,11 +20,11 @@ public interface PostService {
     List<PostDTO> findPostByUser_Id(long id);
 
 
-    PostDTO findPostByUsers_IdAndId(long id, long post_id);
+    PostDTO findPostByUser_IdAndId(long id, long post_id);
 
     void addUserPost(long user_id, Post post);
 
-    List<PostDTO> findPostByUsers_IdAndAuthorOrTitle(long id, String author, String title);
+    List<PostDTO> findPostByUser_IdAndAuthorOrTitle(long id, String author, String title);
 
     List<PostDTO> findPostsByCriteria(Post post);
 
