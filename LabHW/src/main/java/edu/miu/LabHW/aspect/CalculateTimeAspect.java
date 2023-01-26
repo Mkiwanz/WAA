@@ -9,24 +9,27 @@ import org.springframework.stereotype.Component;
 @Component
 public class CalculateTimeAspect {
 
-   // @Pointcut("execution(* edu.miu.LabHW.controller.UserController.*(..))")
-    @Pointcut("execution(java.util.List edu.miu.LabHW.entity.dto.UsersDTO.*(..))")
+    // @Pointcut("execution(* edu.miu.LabHW.controller.UserController.*(..))")
+    // @Pointcut("execution(java.util.List edu.miu.LabHW.entity.dto.UsersDTO.*(..))")
+    @Pointcut("@annotation(edu.miu.LabHW.entity.Annotaions.ExecutionTime))")
     public void logPointcut() {
     }
-    @After(value = "logPointcut()")
-    public void logAfterReturning(JoinPoint joinPoint) throws Throwable {
-        long startTime = System.currentTimeMillis();
-        System.out.println("TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
-    }
-   /* @Around("logPointcut()")
+
+
+    @Around("logPointcut()")
     public Object executionTime(ProceedingJoinPoint point) throws Throwable {
         long startTime = System.currentTimeMillis();
         Object object = point.proceed();
         long endtime = System.currentTimeMillis();
         System.out.println("Class Name: " + point.getSignature().getDeclaringTypeName() + ". Method Name: " + point.getSignature().getName() + ". Time taken for Execution is : " + (endtime - startTime) + "ms");
         return object;
-    }*/
+    }
 
+    /*@After(value = "logPointcut()")
+    public void logAfterReturning(JoinPoint joinPoint) throws Throwable {
+        long startTime = System.currentTimeMillis();
+        System.out.println("TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+    }*/
 
     /* @Pointcut("execution(* edu.miu.LabHW.controller.UserController.*(..))")
     public void logPointcut() {
