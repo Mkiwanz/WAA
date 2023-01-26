@@ -6,6 +6,9 @@ import lombok.Data;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import lombok.Data;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
 
