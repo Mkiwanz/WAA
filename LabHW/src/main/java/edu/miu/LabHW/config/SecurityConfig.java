@@ -42,6 +42,7 @@ public class SecurityConfig {
                 .csrf().disable().cors().and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/authenticate/**").permitAll()
+                .requestMatchers("/api/v1/**").hasAuthority("ADMIN")
                 .requestMatchers("/api/v1/posts").hasAuthority("USER")
                 .anyRequest()
                 .authenticated()
@@ -50,7 +51,6 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 
